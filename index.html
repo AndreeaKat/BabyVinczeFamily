@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gender Reveal Website</title>
+  <style>
+    /* Customize the styling as per your preferences */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom right, #00bfff, #ff69b4);
+    
+   
+    }
+
+    h1 {
+      color: #030002;
+    }
+
+    .countdown {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .reveal-button {
+      padding: 0;
+      width: 500px;
+      height: 500px;
+      background-image: url('present-box.jpg');
+      background-size: cover;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hidden-section {
+      display: none;
+    }
+
+    .gender-message {
+      font-size: 3rem;
+      color: #ff69b4;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .revealed-image {
+      margin-top: 2rem;
+      max-width: 500px;
+    }
+    .new-image {
+  float: left;
+  margin-top: 10%;
+  margin-left: 10%;
+  max-width: 500px;
+  max-height: 500px;
+}
+    .pink-background {
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <h1>Noul membru al familiei Vincze este</h1>
+  <img class="new-image" src="bebeVincze.jpg" alt="New Image">
+  <div class="countdown" id="countdown"></div>
+  <button class="reveal-button" id="revealBtn"></button>
+  <div class="hidden-section" id="hiddenSection">
+    <h1 class="gender-message">FETITA!!</h1>!</h1>
+    <img class="revealed-image" src="baby-girl.jpg" alt="Baby Girl">
+  </div>
+  
+
+  <script>
+    // Countdown timer
+    const countdownElement = document.getElementById('countdown');
+    const revealButton = document.getElementById('revealBtn');
+    const hiddenSection = document.getElementById('hiddenSection');
+    const body = document.body;
+
+    const countdownDate = new Date().getTime() + 10000; // Add 10 seconds to the current time
+    let countdown;
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const seconds = Math.floor(distance / 1000);
+
+      countdownElement.innerHTML = `${seconds}s`;
+
+      if (seconds <= 0) {
+        clearInterval(countdown);
+        countdownElement.innerHTML = "";
+        revealGender();
+      }
+    };
+
+    const revealGender = () => {
+      revealButton.style.display = 'none';
+      hiddenSection.style.display = 'block';
+      body.classList.add('pink-background');
+      body.style.backgroundImage = "url('sclipici.gif')";
+    };
+
+    countdown = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
